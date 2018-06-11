@@ -39,8 +39,8 @@
         </section>
         <section class="container mt-4">
             <template v-for="todo in filterTodos">
-                <todo-item :todo="todo" @update-todo="updateTodo" @edit-todo="currentEdit = todo.id" v-if="currentEdit != todo.id"></todo-item>
-                <edit-todo :todo="todo" @update-todo="updateTodo" @close-edit-todo="currentEdit = -1" v-if="currentEdit == todo.id"></edit-todo>            
+                <todo-item :key="todo.id" :todo="todo" @update-todo="updateTodo" @edit-todo="currentEdit = todo.id" v-if="currentEdit != todo.id"></todo-item>
+                <edit-todo :key="todo.id" :todo="todo" @update-todo="updateTodo" @close-edit-todo="currentEdit = -1" v-if="currentEdit == todo.id"></edit-todo>            
             </template>
             <div class="showCount" v-if="todosCount!=0">{{ todosCount }} tasks</div>
         </section>

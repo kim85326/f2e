@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+    <title>個人闖關記錄查詢</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">個人闖關記錄查詢</h1>
+        <form>
+            <div class="form-row justify-content-center">
+                <div class="col-auto">
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="email@example.com">
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary mb-2" id="search">查詢</button>
+                </div>
+            </div>
+        </form>
+          
+        <div id="output"></div>
+    </div>
+    <script>
+        var weeks = [
+            {
+                interval: '06/04(一)~06/11(一)',
+                start: moment("2018-06-04 12:00:00"),
+                end: moment("2018-06-11 11:59:59")
+            },
+            {
+                interval: '06/11(一)~06/18(一)',
+                start: moment("2018-06-11 12:00:00"),
+                end: moment("2018-06-18 11:59:59")
+            },
+            {
+                interval: '06/18(一)~06/25(一)',
+                start: moment("2018-06-18 12:00:00"),
+                end: moment("2018-06-25 11:59:59")
+            },
+            {
+                interval: '06/25(一)~07/02(一)',
+                start: moment("2018-06-25 12:00:00"),
+                end: moment("2018-07-02 11:59:59")
+            },
+            {
+                interval: '07/02(一)~07/9(一)',
+                start: moment("2018-07-02 12:00:00"),
+                end: moment("2018-07-09 11:59:59")
+            },
+            {
+                interval: '07/09(一)~07/16(一)',
+                start: moment("2018-07-09 12:00:00"),
+                end: moment("2018-07-16 11:59:59")
+            },
+            {
+                interval: '07/16(一)~07/23(一)',
+                start: moment("2018-07-16 12:00:00"),
+                end: moment("2018-07-23 11:59:59")
+            },
+            {
+                interval: '07/23(一)~07/30(一)',
+                start: moment("2018-07-23 12:00:00"),
+                end: moment("2018-07-30 11:59:59")
+            },
+            {
+                interval: '07/30(一)~08/06(一)',
+                start: moment("2018-07-30 12:00:00"),
+                end: moment("2018-08-06 11:59:59")
+            }
+        ];
+
+        $(document).ready(function(){
+
+            $("#search").click(function(){
+                var email = $("#email").val();
+                if(email!=''){
+                    $('#output').html("");
+                    $.ajax({
+                        url: 'https://www.thef2e.com/api/stageCheck',
+                        type: 'post',
+                        data: {
+                            email: email
+                        },
+                        dataType: 'json',
+                        success: function (response) {
+                            console.log(response);
+                            let result = "";
+                            response.forEach(function(item){
+                                result += `挑戰關卡：${item.stage}<br>`;
+                                result += `挑戰區間：${weeks[item.stage - 1].interval}<br>`;
+                                result += `投稿時間：${moment(item.timeStamp).utc().format("YYYY-MM-DD HH:mm:ss")}<br>`;
+                                result += `挑戰領域：${item.tag}<br>`;
+                                result += `作品網址：<a href="${item.url}" target="_blank">${item.url}</a><br>`;
+                                result += `挑戰結果：<span style="color:red">${passStage(item.stage,item.timeStamp)}</span><br>`;
+                                result += `<iframe src="${item.url}" width="600px" height="600px"><br>`;
+                            });
+                            $("#output").html(result);
+                        },
+                        error: function (xhr) {
+                            alert('Ajax 發生錯誤' + xhr);
+                        }
+                    }); 
+                }else{
+                    alert('請輸入email');
+                }
+            });
+        });
+
+        function passStage(stage,timeStamp){
+            if(moment(timeStamp).isBetween(weeks[stage - 1].start, weeks[stage - 1].end)){
+                return '於期間內投稿，恭喜達標';
+            }else{
+                return '未於期間內投稿，未達標';
+            }
+        }
+    </script>
+</body>
+</html>

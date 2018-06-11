@@ -65,6 +65,7 @@ body{
     background-color: #F2F2F2;
     border-radius: 5px;
     box-shadow: 0 4px 4px 0 #C8C8C8;
+    margin-bottom: 10px;
 }
 
 .new-todo-header{

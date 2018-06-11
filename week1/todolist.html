@@ -18,13 +18,13 @@
         <div class="bg-blue">
             <ul class="nav container justify-content-between todo-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">My Tasks</a>
+                    <a class="nav-link" href="#" @click="currentTab = 'all'" :class="{active: currentTab == 'all'}">My Tasks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">in Progress</a>
+                    <a class="nav-link" href="#" @click="currentTab = 'progress'" :class="{active: currentTab == 'progress'}">in Progress</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Completed</a>
+                    <a class="nav-link" href="#" @click="currentTab = 'completed'" :class="{active: currentTab == 'completed'}">Completed</a>
                 </li>
             </ul>  
         </div>
@@ -35,13 +35,15 @@
                 </label>
                 <input type="text" placeholder="Add Task" class="form-control form-control-lg">
             </div>
-            <edit-todo @add-new-todo="addNewTodo" @close-edit-todo="isAddNewTodo=false" v-if="isAddNewTodo"></edit-todo>
+            <edit-todo @update-todo="addNewTodo" @close-edit-todo="isAddNewTodo=false" v-if="isAddNewTodo" :id="idCount"></edit-todo>
         </section>
         <section class="container mt-4">
-            <todo-item v-for="todo in todos" :todo="todo" :key="todo.id"></todo-item>
+            <template v-for="todo in filterTodos">
+                <todo-item :todo="todo" @update-todo="updateTodo" @edit-todo="currentEdit = todo.id" v-if="currentEdit != todo.id"></todo-item>
+                <edit-todo :todo="todo" @update-todo="updateTodo" @close-edit-todo="currentEdit = -1" v-if="currentEdit == todo.id"></edit-todo>            
+            </template>
             <div class="showCount" v-if="todosCount!=0">{{ todosCount }} tasks</div>
         </section>
-        
     </div>
    
     <script type="text/x-template" id="edit-todo">
@@ -101,43 +103,45 @@
                 </div>
                 <div class="new-todo-footer">
                     <button class="cancel border-0" @click="closeEdit"><i class="fas fa-times"></i> Cancel</button>
-                    <button class="send border-0" @click="newTodo"><i class="fas fa-plus"></i> Add Task</button>
+                    <button class="send border-0" @click.prevent="updateTodo"><i class="fas fa-plus"></i> Add Task</button>
                 </div>
             </div>
         </div>
     </script>
 
     <script type="text/x-template" id="todo-item">
-        <div class="todo-item" :class="{ 'stared': stared }">
-            <div class="todo-header">
-                <div class="todo-checkbox">
-                    <input type="checkbox" :id="`todo-checkbox-${todo.id}`" v-model="completed">
-                    <label :for="`todo-checkbox-${todo.id}`"></label>
+        <div>
+            <div class="todo-item" :class="{ 'stared': todo.isStared }">
+                <div class="todo-header">
+                    <div class="todo-checkbox">
+                        <input type="checkbox" :id="`todo-checkbox-${todo.id}`" v-model="todo.isCompleted" @change="updateTodo('isCompleted', todo.isCompleted)">
+                        <label :for="`todo-checkbox-${todo.id}`"></label>
+                    </div>
+                    <div class="todo-title" :class="{ 'completed': todo.isCompleted }">                   
+                        {{ todo.title }}
+                    </div>
+                    <div class="todo-option">
+                        <a href="#" @click.prevent="updateTodo('isStared', !todo.isStared)">
+                            <i class="far fa-star" v-if="!todo.isStared"></i>
+                            <i class="fas fa-star" v-if="todo.isStared"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-pencil-alt" @click.prevent="editTodo"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="todo-title" :class="{ 'completed': completed }">                   
-                    {{ todo.title }}
+                <div class="todo-body">
+                    <span v-if="todo.date!=null">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ todo.date }}
+                    </span>
+                    <!-- <span>
+                        <i class="far fa-file"></i>
+                    </span>
+                    <span>
+                        <i class="far fa-comment-dots"></i>
+                    </span> -->
                 </div>
-                <div class="todo-option">
-                    <a href="#" @click.prevent="stared=!stared">
-                        <i class="far fa-star" v-if="!stared"></i>
-                        <i class="fas fa-star" v-if="stared"></i>
-                    </a>
-                    <a href="#">
-                        <i class="fas fa-pencil-alt"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="todo-body">
-                <span v-if="todo.date!=null">
-                    <i class="far fa-calendar-alt"></i>
-                    {{ todo.date }}
-                </span>
-                <!-- <span>
-                    <i class="far fa-file"></i>
-                </span>
-                <span>
-                    <i class="far fa-comment-dots"></i>
-                </span> -->
             </div>
         </div>
     </script>
@@ -145,22 +149,40 @@
     <script>
         Vue.component('editTodo',{
             template: '#edit-todo',
+            props: {
+                todo: {
+                    default: function () {
+                        return {
+                            title: null,
+                            date: null,
+                            isCompleted: false,
+                            isStared: false
+                        }
+                    }
+                },
+                id: Number
+            },
             data() {
                 return {
-                    isNewTodo: false,
-                    cacheTitle: null,
-                    cacheDate: null
+                    cacheTitle: this.todo.title,
+                    cacheDate: this.todo.date
                 }
             },
             methods: {
-                newTodo() {
+                // 發送 update-todo 的事件
+                updateTodo() {
                     const newTodo = {
-                        title: this.cacheTitle,
-                        date: this.cacheDate
+                        ...this.todo
+                    };
+                    newTodo['title'] = this.cacheTitle;
+                    newTodo['date'] = this.cacheDate;
+                    if(this.id != undefined){
+                        newTodo['id'] = this.id;
                     }
-                    this.$emit('add-new-todo', newTodo);
+                    this.$emit('update-todo', newTodo);
                     this.closeEdit();
                 },
+                // 發送 close-edit-todo 的事件
                 closeEdit() {
                     this.$emit('close-edit-todo');
                 }
@@ -169,16 +191,19 @@
         Vue.component('todoItem', {
             template: '#todo-item',
             props: ['todo'],
-            data() {
-                return {
-                    completed: this.todo.isCompleted,
-                    stared: this.todo.isStared,
-                }
-            },
             methods: {
-                updateTodo() {
-                    this.$emit('updateTodo', this.newTodo);
+                // 發送 update-todo 的事件
+                updateTodo(field, state) {
+                    const todo = {
+                        ...this.todo
+                    };
+                    todo[field] = state;
+                    this.$emit('update-todo', todo);
                 },
+                // 發送 edit-todo 的事件
+                editTodo() {
+                    this.$emit('edit-todo');
+                }
             }
         });
         var app = new Vue({
@@ -186,26 +211,46 @@
             data: {
                 todos: [],
                 idCount: 0,
-                isAddNewTodo: false
+                isAddNewTodo: false,
+                currentEdit: -1,
+                currentTab: 'all'
             },
             computed: {
+                // 計算 filterTodo 的長度
                 todosCount() {
-                    return this.todos.length;
+                    return this.filterTodos.length;
+                },
+                // 依條件過濾 todos
+                filterTodos() {
+                    if(this.currentTab == 'all'){
+                        return this.todos;
+                    }else if(this.currentTab == 'progress'){
+                        return this.todos.filter(function(item){
+                            return item.isCompleted==false;
+                        });
+                    }else if(this.currentTab == 'completed'){
+                        return this.todos.filter(function(item) {
+                            return item.isCompleted == true;
+                        });
+                    }
                 }
             },
             methods: {
+                // 新增 todo 進 todos
                 addNewTodo(newTodo) {
-                    todo = {
-                        id: this.idCount,
-                        ...newTodo,
-                        isCompleted: false,
-                        isStared: false
-                    }
-                    this.todos.push(todo);
+                    this.todos.push(newTodo);
                     this.idCount++;
                 },
+                // 更新 todo
                 updateTodo(todo) {
-                    console.log(todo);
+                    this.todos.forEach(function(item){
+                        if(item.id == todo.id){
+                            item.title = todo.title;
+                            item.date = todo.date;
+                            item.isCompleted = todo.isCompleted;
+                            item.isStared = todo.isStared;
+                        }
+                    });
                 }
             }
         });

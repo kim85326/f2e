@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/screen.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <title>week3 - admin order</title>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="brand">Shoptime</div>
+                <div class="nav">
+                    <a href="./index.html" class="nav-item active">HOME</a>
+                    <a href="./orders.html" class="nav-item">ORDERS</a>
+                    <a href="./product.html" class="nav-item">PRODUCT</a>
+                </div>
+                <div class="admin">ADMIN</div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="main">
+        <div class="container">
+            <div class="top row">
+                <div class="title">OVERVIEW</div>
+                <div class="conditions gray">
+                    <span class="dates">
+                        <span>2018/6/6</span>
+                        <i class="fas fa-caret-right"></i>
+                        <span>2018/6/13</span>
+                    </span>
+                    <span class="unit">
+                        <span>Weekly</span>
+                        <i class="fas fa-caret-down"></i>
+                        <div class="unit-list">
+                            <div class="unit-item">Daily</div>
+                            <div class="unit-item active">Weekly</div>
+                            <div class="unit-item">Monthly</div>
+                            <div class="unit-item">Yearly</div>
+                            <div class="unit-item">Custom</div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+
+            <div class="block1 row">
+                <div class="panel">
+                    <div class="title">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>TOTAL REVENUE</span>
+                    </div>
+                    <div class="number green">
+                        54,540
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="title">
+                        <i class="fas fa-boxes"></i>
+                        <span>TOTAL COST</span>
+                    </div>
+                    <div class="number red">
+                        12,660
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="title">
+                        <i class="fas fa-money-bill"></i>
+                        <span>NET INCOME</span>
+                    </div>
+                    <div class="number blue">
+                        41,880
+                    </div>
+                </div>
+            </div>
+
+            <div class="block2 row">
+                <div class="panel" id="curve_chart"></div>
+            </div>
+
+            <div class="block3 row">
+                <div class="panel">
+                    <div class="title">
+                        Transaction Website
+                    </div>
+                    <div class="channel-list">
+                        <div class="channel-item row">
+                            <div class="logo">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <div class="name gray">Facebook.com</div>
+                            <div class="number">45,836</div>
+                            <div class="rate green">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>20%</span>
+                                </span>
+                                <div class="tip">
+                                    INCREASE <span class="green">899</span> VIEWS
+                                    <div class="last-week gray">last week: 44,937</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel-item row">
+                            <div class="logo">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="name gray">google.com</div>
+                            <div class="number">23,582</div>
+                            <div class="rate green">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12%</span>
+                                </span>
+                                <div class="tip">
+                                    INCREASE
+                                    <span class="green">899</span> VIEWS
+                                    <div class="last-week gray">last week: 44,937</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel-item row">
+                            <div class="logo">
+                                <i class="fab fa-stripe-s"></i>
+                            </div>
+                            <div class="name gray">Shopify.com</div>
+                            <div class="number">2,489</div>
+                            <div class="rate red">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>15%</span>
+                                </span>
+                                <div class="tip">
+                                    INCREASE
+                                    <span class="green">899</span> VIEWS
+                                    <div class="last-week gray">last week: 44,937</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel-item row">
+                            <div class="logo">
+                                <i class="fab fa-wordpress"></i>
+                            </div>
+                            <div class="name gray">Wordpress.com</div>
+                            <div class="number">1,057</div>
+                            <div class="rate red">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>30%</span>
+                                </span>
+                                <div class="tip">
+                                    INCREASE
+                                    <span class="green">899</span> VIEWS
+                                    <div class="last-week gray">last week: 44,937</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="title">
+                        Latest Orders
+                    </div>
+                    <div class="order-list">
+                        <div class="order-item row">
+                            <div class="picture" style="background-image: url('./img/index01.png')"></div>
+                            <div class="info">
+                                <div class="name">Vintage T-shirt</div>
+                                <div class="time gray">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2018/6/13 13:42</span>
+                                </div>
+                                <div class="buyer gray">
+                                    <i class="fas fa-male"></i>
+                                    <span>Belle Willis</span>
+                                </div>
+                            </div>
+                            <div class="price">
+                                Total
+                                <div>3,200</div>
+                            </div>
+                        </div>
+                        <div class="order-item row">
+                            <div class="picture" style="background-image: url('./img/index02.png')"></div>
+                            <div class="info">
+                                <div class="name">Cowboy Jacket</div>
+                                <div class="time gray">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2018/6/13 10:45</span>
+                                </div>
+                                <div class="buyer gray">
+                                    <i class="fas fa-male"></i>
+                                    <span>Adrian Cummings</span>
+                                </div>
+                            </div>
+                            <div class="price">
+                                Total
+                                <div>2,800</div>
+                            </div>
+                        </div>
+                        <div class="order-item row">
+                            <div class="picture" style="background-image: url('./img/index03.png')"></div>
+                            <div class="info">
+                                <div class="name">Coach Coat</div>
+                                <div class="time gray">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2018/6/13 8:26</span>
+                                </div>
+                                <div class="buyer gray">
+                                    <i class="fas fa-male"></i>
+                                    <span>Lura Holland</span>
+                                </div>
+                            </div>
+                            <div class="price">
+                                Total
+                                <div>1,600</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses'],
+                ['2004', 1000, 400],
+                ['2005', 1170, 460],
+                ['2006', 660, 1120],
+                ['2007', 1030, 540]
+            ]);
+
+            var options = {
+                title: 'Activity',
+                legend: { position: 'bottom' },
+                height: 400
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+
+    </script>
+</body>
+
+</html>

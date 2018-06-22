@@ -1,0 +1,460 @@
+@charset "UTF-8";
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../usr/local/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 9, ../sass/screen.scss */
+body {
+  background-color: #F2F2F2;
+}
+
+/* line 13, ../sass/screen.scss */
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* 顏色 */
+/* line 19, ../sass/screen.scss */
+.red {
+  color: #D0021B;
+}
+
+/* line 23, ../sass/screen.scss */
+.blue {
+  color: #4A90E2;
+}
+
+/* line 27, ../sass/screen.scss */
+.green {
+  color: #7ED321;
+}
+
+/* line 31, ../sass/screen.scss */
+.gray {
+  color: #9B9B9B;
+}
+
+/* 常用 */
+/* line 36, ../sass/screen.scss */
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* line 45, ../sass/screen.scss */
+.row {
+  display: flex;
+}
+
+/* line 49, ../sass/screen.scss */
+.panel {
+  background: #FFFFFF;
+  -moz-box-shadow: 0px 0px 10px 5px #EBEBEB;
+  -webkit-box-shadow: 0px 0px 10px 5px #EBEBEB;
+  box-shadow: 0px 0px 10px 5px #EBEBEB;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* navbar */
+/* line 57, ../sass/screen.scss */
+.navbar {
+  background-color: black;
+  color: white;
+  height: 70px;
+  line-height: 70px;
+  padding-left: 27px;
+  padding-right: 27px;
+}
+/* line 64, ../sass/screen.scss */
+.navbar .brand {
+  font-family: HelveticaNeue-Bold;
+  font-size: 24px;
+}
+/* line 68, ../sass/screen.scss */
+.navbar .nav {
+  flex: 1;
+  margin-left: 80px;
+}
+/* line 71, ../sass/screen.scss */
+.navbar .nav .nav-item {
+  position: relative;
+  margin-right: 40px;
+  display: inline-block;
+  height: 70px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: HelveticaNeue-Bold;
+  font-size: 16px;
+  color: #9B9B9B;
+  transition: all 0.3s;
+}
+/* line 82, ../sass/screen.scss */
+.navbar .nav .nav-item.active, .navbar .nav .nav-item:hover {
+  color: white;
+}
+/* line 84, ../sass/screen.scss */
+.navbar .nav .nav-item.active::after, .navbar .nav .nav-item:hover::after {
+  opacity: 1;
+}
+/* line 88, ../sass/screen.scss */
+.navbar .nav .nav-item::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  opacity: 0;
+}
+/* line 100, ../sass/screen.scss */
+.navbar .admin {
+  font-family: HelveticaNeue-Bold;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+/* main */
+/* line 108, ../sass/screen.scss */
+.main {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+/* line 113, ../sass/screen.scss */
+.top {
+  position: relative;
+  z-index: 3;
+  justify-content: space-between;
+}
+/* line 117, ../sass/screen.scss */
+.top .title {
+  font-family: HelveticaNeue-Bold;
+  font-size: 24px;
+  color: #000000;
+}
+/* line 122, ../sass/screen.scss */
+.top .conditions {
+  font-family: HelveticaNeue-Medium;
+  font-size: 16px;
+}
+/* line 125, ../sass/screen.scss */
+.top .conditions i {
+  color: black;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+/* line 130, ../sass/screen.scss */
+.top .conditions .unit {
+  padding-bottom: 8px;
+  position: relative;
+  margin-left: 20px;
+  cursor: pointer;
+}
+/* line 135, ../sass/screen.scss */
+.top .conditions .unit > i {
+  margin-right: 0;
+}
+/* line 138, ../sass/screen.scss */
+.top .conditions .unit .unit-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  -moz-box-shadow: 1px 2px 10px 0px #9B9B9B;
+  -webkit-box-shadow: 1px 2px 10px 0px #9B9B9B;
+  box-shadow: 1px 2px 10px 0px #9B9B9B;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 145, ../sass/screen.scss */
+.top .conditions .unit .unit-list .unit-item {
+  background-color: white;
+  color: black;
+  width: 125px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+/* line 152, ../sass/screen.scss */
+.top .conditions .unit .unit-list .unit-item.active, .top .conditions .unit .unit-list .unit-item:hover {
+  background-color: black;
+  color: white;
+}
+/* line 158, ../sass/screen.scss */
+.top .conditions .unit.active, .top .conditions .unit:hover {
+  color: #787878;
+}
+/* line 160, ../sass/screen.scss */
+.top .conditions .unit.active .unit-list, .top .conditions .unit:hover .unit-list {
+  display: block;
+}
+
+/* line 168, ../sass/screen.scss */
+.block1 {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+}
+/* line 172, ../sass/screen.scss */
+.block1 .panel {
+  padding: 30px 40px;
+  text-align: center;
+}
+/* line 176, ../sass/screen.scss */
+.block1 .panel:not(:last-child) {
+  margin-right: 20px;
+}
+/* line 179, ../sass/screen.scss */
+.block1 .title {
+  font-family: HelveticaNeue-Medium;
+  font-size: 16px;
+}
+/* line 183, ../sass/screen.scss */
+.block1 .number {
+  margin-top: 16px;
+  font-family: HelveticaNeue-Bold;
+  font-size: 36px;
+}
+
+/* line 190, ../sass/screen.scss */
+.block2 {
+  margin-top: 18px;
+}
+
+/* line 194, ../sass/screen.scss */
+.block3 {
+  margin-top: 18px;
+}
+/* line 196, ../sass/screen.scss */
+.block3 .panel {
+  padding: 30px 40px;
+}
+/* line 198, ../sass/screen.scss */
+.block3 .panel:not(:last-child) {
+  margin-right: 20px;
+}
+/* line 202, ../sass/screen.scss */
+.block3 .title {
+  font-family: HelveticaNeue-Bold;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+/* line 207, ../sass/screen.scss */
+.block3 .channel-item {
+  position: relative;
+  height: 92px;
+  align-items: center;
+  font-family: HelveticaNeue-Medium;
+}
+/* line 212, ../sass/screen.scss */
+.block3 .channel-item .logo {
+  margin-right: 20px;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+}
+/* line 217, ../sass/screen.scss */
+.block3 .channel-item .logo i {
+  font-size: 45px;
+}
+/* line 221, ../sass/screen.scss */
+.block3 .channel-item .name {
+  flex: 1;
+  font-size: 16px;
+}
+/* line 225, ../sass/screen.scss */
+.block3 .channel-item .number {
+  font-size: 20px;
+}
+/* line 228, ../sass/screen.scss */
+.block3 .channel-item .rate {
+  position: relative;
+  margin-left: 20px;
+  font-size: 16px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+/* line 234, ../sass/screen.scss */
+.block3 .channel-item .rate .tip {
+  display: none;
+  box-sizing: border-box;
+  width: 186px;
+  height: 88px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  padding-top: 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 250, ../sass/screen.scss */
+.block3 .channel-item .rate .tip span {
+  font-family: HelveticaNeue-Bold;
+  font-size: 20px;
+  line-height: 16px;
+}
+/* line 255, ../sass/screen.scss */
+.block3 .channel-item .rate .tip .last-week {
+  margin-top: 8px;
+  font-family: HelveticaNeue-Italic;
+  font-size: 14px;
+}
+/* line 260, ../sass/screen.scss */
+.block3 .channel-item .rate .tip::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+/* line 273, ../sass/screen.scss */
+.block3 .channel-item .rate.active .tip, .block3 .channel-item .rate:hover .tip {
+  display: block;
+}
+/* line 278, ../sass/screen.scss */
+.block3 .channel-item:not(:last-child) {
+  border-bottom: 1px solid #EBEBEB;
+}
+/* line 283, ../sass/screen.scss */
+.block3 .order-item {
+  height: 116px;
+  align-items: flex-end;
+}
+/* line 286, ../sass/screen.scss */
+.block3 .order-item .picture {
+  align-self: center;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  margin-right: 20px;
+}
+/* line 293, ../sass/screen.scss */
+.block3 .order-item .info {
+  flex: 1;
+}
+/* line 295, ../sass/screen.scss */
+.block3 .order-item .info i {
+  width: 20px;
+  text-align: center;
+}
+/* line 299, ../sass/screen.scss */
+.block3 .order-item .info .name {
+  font-family: HelveticaNeue-Bold;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+/* line 304, ../sass/screen.scss */
+.block3 .order-item .info .time {
+  margin-bottom: 8px;
+}
+/* line 307, ../sass/screen.scss */
+.block3 .order-item .info .buyer {
+  margin-bottom: 20px;
+}
+/* line 309, ../sass/screen.scss */
+.block3 .order-item .info .buyer i {
+  font-size: 20px;
+}
+/* line 314, ../sass/screen.scss */
+.block3 .order-item .price {
+  margin-bottom: 20px;
+  font-family: HelveticaNeue;
+  font-size: 14px;
+  text-align: right;
+}
+/* line 319, ../sass/screen.scss */
+.block3 .order-item .price > div {
+  margin-top: 8px;
+  font-family: HelveticaNeue-Bold;
+  font-size: 20px;
+}
+/* line 325, ../sass/screen.scss */
+.block3 .order-item:not(:last-child) {
+  border-bottom: 1px solid #EBEBEB;
+}

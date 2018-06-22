@@ -1,0 +1,329 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+
+body {
+    background-color: #F2F2F2;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+/* 顏色 */
+.red {
+    color: #D0021B;
+}
+
+.blue {
+    color: #4A90E2;
+}
+
+.green {
+    color: #7ED321;
+}
+
+.gray {
+    color: #9B9B9B;
+}
+
+/* 常用 */
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.row {
+    display: flex;
+}
+
+.panel {
+    background: #FFFFFF;
+    @include box-shadow(0px 0px 10px 5px #EBEBEB);
+    @include border-radius(3px);
+    width: 100%;
+}
+
+/* navbar */
+.navbar {
+    background-color: black;
+    color: white;
+    height: 70px;
+    line-height: 70px;
+    padding-left: 27px;
+    padding-right: 27px;
+    .brand {
+        font-family: HelveticaNeue-Bold;
+        font-size: 24px;
+    }
+    .nav {
+        flex: 1;
+        margin-left: 80px;
+        .nav-item {
+            position: relative;
+            margin-right: 40px;
+            display: inline-block;
+            height: 70px;
+            padding-left: 16px;
+            padding-right: 16px;
+            font-family: HelveticaNeue-Bold;
+            font-size: 16px;
+            color: #9B9B9B;
+            transition: all 0.3s;
+            &.active, &:hover {
+                color: white;
+                &::after {
+                    opacity: 1;
+                }
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                bottom: 0;
+                left: 0;
+                background-color: white;
+                opacity: 0;
+            }
+        }
+    }
+    .admin {
+        font-family: HelveticaNeue-Bold;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+}
+
+/* main */
+.main {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.top {
+    position: relative;
+    z-index: 3;
+    justify-content: space-between;
+    .title {
+        font-family: HelveticaNeue-Bold;
+        font-size: 24px;
+        color: #000000;
+    }
+    .conditions {
+        font-family: HelveticaNeue-Medium;
+        font-size: 16px;
+        i {
+            color: black;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+        .unit {
+            padding-bottom: 8px;
+            position: relative;
+            margin-left: 20px;
+            cursor: pointer;
+            & > i {
+                margin-right: 0;
+            }
+            .unit-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                @include box-shadow(1px 2px 10px 0px #9B9B9B);
+                @include border-radius(3px);
+                .unit-item {
+                    background-color: white;
+                    color: black;
+                    width: 125px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    &.active , &:hover {
+                        background-color: black;
+                        color: white;
+                    }
+                }
+            }
+            &.active , &:hover {
+                color: #787878;
+                .unit-list {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.block1 {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    .panel {
+        padding: 30px 40px;
+        text-align: center;
+    }
+    .panel:not(:last-child) {
+        margin-right: 20px;
+    }
+    .title {
+        font-family: HelveticaNeue-Medium;
+        font-size: 16px;
+    }
+    .number {
+        margin-top: 16px;
+        font-family: HelveticaNeue-Bold;
+        font-size: 36px;
+    }
+}
+
+.block2 {
+    margin-top: 18px;
+}
+
+.block3 {
+    margin-top: 18px;
+    .panel {
+        padding: 30px 40px;
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+    .title {
+        font-family: HelveticaNeue-Bold;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .channel-item {
+        position: relative;
+        height: 92px;
+        align-items: center;
+        font-family: HelveticaNeue-Medium;
+        .logo {
+            margin-right: 20px;
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            & i {
+                font-size: 45px;
+            }
+        }
+        .name {
+            flex: 1;
+            font-size: 16px;
+        }
+        .number {
+            font-size: 20px;
+        }
+        .rate {
+            position: relative;
+            margin-left: 20px;
+            font-size: 16px;
+            padding-top: 20px;
+            margin-bottom: 20px;
+            .tip {
+                display: none;
+                box-sizing: border-box;
+                width: 186px;
+                height: 88px;
+                text-align: center;
+                background-color: black;
+                color: white;
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: HelveticaNeue;
+                font-size: 14px;
+                padding-top: 20px;
+                @include border-radius(3px);
+                span {
+                    font-family: HelveticaNeue-Bold;
+                    font-size: 20px;
+                    line-height: 16px;
+                }
+                .last-week {
+                    margin-top: 8px;
+                    font-family: HelveticaNeue-Italic;
+                    font-size: 14px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 10px;
+                    height: 10px;
+                    background-color: black;
+                    transform: rotate(45deg);
+                }
+            }
+            &.active , &:hover {
+                .tip {
+                    display: block;
+                }
+            }
+        }
+        &:not(:last-child) {
+            border-bottom: 1px solid #EBEBEB;
+        }
+    }
+
+    .order-item {
+        height: 116px;
+        align-items: flex-end;
+        .picture {
+            align-self: center;
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            margin-right: 20px;
+        }
+        .info {
+            flex: 1;
+            i {
+                width: 20px;
+                text-align: center;
+            }
+            .name {
+                font-family: HelveticaNeue-Bold;
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+            .time {
+                margin-bottom: 8px;
+            }
+            .buyer {
+                margin-bottom: 20px;
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+        .price {
+            margin-bottom: 20px;
+            font-family: HelveticaNeue;
+            font-size: 14px;
+            text-align: right;
+            > div {
+                margin-top: 8px;
+                font-family: HelveticaNeue-Bold;
+                font-size: 20px;
+            }
+        }
+        &:not(:last-child) {
+            border-bottom: 1px solid #EBEBEB;
+        }
+    }
+}

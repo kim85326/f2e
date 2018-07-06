@@ -1,0 +1,79 @@
+{
+    "comics": [
+        {
+            "id": 1,
+            "name": "預設漫畫",
+            "chapters": [
+                {
+                    "id": 1,
+                    "title": "第一章",
+                    "pages": [
+                        "/static/img/default/storyboard-1.png",
+                        "/static/img/default/storyboard-2.png",
+                        "/static/img/default/storyboard-3.png",
+                        "/static/img/default/storyboard-4.png",
+                        "/static/img/default/storyboard-5.png",
+                        "/static/img/default/storyboard-6.png",
+                        "/static/img/default/storyboard-7.png",
+                        "/static/img/default/storyboard-8.png",
+                        "/static/img/default/storyboard-9.png",
+                        "/static/img/default/storyboard-10.png",
+                        "/static/img/default/storyboard-11.png",
+                        "/static/img/default/storyboard-12.png"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "第二章",
+                    "pages": [
+                       "/static/img/default/storyboard-1.png",
+                        "/static/img/default/storyboard-2.png",
+                        "/static/img/default/storyboard-3.png",
+                        "/static/img/default/storyboard-4.png",
+                        "/static/img/default/storyboard-5.png",
+                        "/static/img/default/storyboard-6.png",
+                        "/static/img/default/storyboard-7.png",
+                        "/static/img/default/storyboard-8.png",
+                        "/static/img/default/storyboard-9.png",
+                        "/static/img/default/storyboard-10.png",
+                        "/static/img/default/storyboard-11.png",
+                        "/static/img/default/storyboard-12.png"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "海賊王",
+            "chapters": [
+                {
+                    "id": 1,
+                    "title": "偉大的航路突入篇",
+                    "pages": [
+                        "/static/img/one_piece/p1.png",
+                        "/static/img/one_piece/p2.png",
+                        "/static/img/one_piece/p3.png",
+                        "/static/img/one_piece/p4.png"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "喬巴登場·冬島篇",
+                    "pages": [
+                        "/static/img/one_piece/p5.png",
+                        "/static/img/one_piece/p6.png",
+                        "/static/img/one_piece/p7.png"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "完結篇",
+                    "pages": [
+                        "/static/img/one_piece/p8.png",
+                        "/static/img/one_piece/p9.png"
+                    ]
+                }
+            ]
+        }
+    ]
+}

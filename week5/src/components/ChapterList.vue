@@ -5,7 +5,10 @@
     </div>
     <ul class="list">
         <li v-for="(chapter, key) in chapters" :key="key">
-          <router-link :to="{name: 'Reading', params:{ id: comicId, cid: chapter.id }}">Chapter {{chapter.id}}: {{chapter.title}}</router-link>
+          <router-link :to="{name: 'Reading', params:{ id: comicId, cid: chapter.id }}">
+            Chapter {{chapter.id}}: {{chapter.title}}
+            <span>new</span>
+          </router-link>
         </li>
     </ul>
 </div>

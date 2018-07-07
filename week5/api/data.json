@@ -2,11 +2,17 @@
     "comics": [
         {
             "id": 1,
-            "name": "預設漫畫",
+            "name": "MY HEXSCHOOL",
+            "coverImg": "/static/img/default/cover.png",
+            "genres": "Fusce/vehicula/dolor",
+            "author": "Namae Shiranai",
+            "status": "Ongoing",
+            "rate": 4,
+            "summary": "if your banker breaks, you snap; if your apothecary by mistake sends you poison in your pills, you die.<br><br>Therefore, I say, I saw that this situation of mine was the precise situation of every mortal that has this Siamese connexion with a plurality of other mortals. ",
             "chapters": [
                 {
                     "id": 1,
-                    "title": "第一章",
+                    "title": "The F2E Challenge Start!",
                     "pages": [
                         "/static/img/default/storyboard-1.png",
                         "/static/img/default/storyboard-2.png",
@@ -24,7 +30,7 @@
                 },
                 {
                     "id": 2,
-                    "title": "第二章",
+                    "title": "Todo List is Going Crazy!",
                     "pages": [
                        "/static/img/default/storyboard-1.png",
                         "/static/img/default/storyboard-2.png",
@@ -45,32 +51,38 @@
         {
             "id": 2,
             "name": "海賊王",
+            "coverImg": "/static/img/OnePiece/cover.png",
+            "genres": "Fusce/vehicula/dolor",
+            "author": "Namae Shiranai",
+            "status": "Ongoing",
+            "rate": 5,
+            "summary": "If your banker breaks, you snap; if your apothecary by mistake sends you poison in your pills, you die. <br> <br> Therefore, I say, I saw that this situation of mine was the precise situation of every mortal that has this Siamese connexion with a plurality of other mortals.",
             "chapters": [
                 {
                     "id": 1,
                     "title": "偉大的航路突入篇",
                     "pages": [
-                        "/static/img/one_piece/p1.png",
-                        "/static/img/one_piece/p2.png",
-                        "/static/img/one_piece/p3.png",
-                        "/static/img/one_piece/p4.png"
+                        "/static/img/OnePiece/p1.jpg",
+                        "/static/img/OnePiece/p2.jpg",
+                        "/static/img/OnePiece/p3.jpg",
+                        "/static/img/OnePiece/p4.jpg"
                     ]
                 },
                 {
                     "id": 2,
                     "title": "喬巴登場·冬島篇",
                     "pages": [
-                        "/static/img/one_piece/p5.png",
-                        "/static/img/one_piece/p6.png",
-                        "/static/img/one_piece/p7.png"
+                        "/static/img/OnePiece/p5.jpg",
+                        "/static/img/OnePiece/p6.jpg",
+                        "/static/img/OnePiece/p7.jpg"
                     ]
                 },
                 {
                     "id": 3,
                     "title": "完結篇",
                     "pages": [
-                        "/static/img/one_piece/p8.png",
-                        "/static/img/one_piece/p9.png"
+                        "/static/img/OnePiece/p8.jpg",
+                        "/static/img/OnePiece/p9.jpg"
                     ]
                 }
             ]

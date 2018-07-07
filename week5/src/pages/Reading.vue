@@ -44,7 +44,7 @@ export default {
         .get(`api/comics/${vm.comicId}`)
         .then(function (response) {
           var data = response.data
-          console.log(data)
+          // console.log(data)
           vm.chapters = data.chapters.slice(0)
           vm.pages = data.chapters[vm.currentChapter - 1].pages.slice(0)
         })

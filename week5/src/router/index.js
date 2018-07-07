@@ -6,11 +6,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/home',
-      name: 'Home',
-      component: () => import('@/pages/Home')
-    },
-    {
       path: '/comic/:id',
       name: 'ComicDetail',
       component: () => import('@/pages/ComicDetail')
@@ -22,7 +17,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/home'
+      redirect: '/comic/1'
     }
   ]
 })

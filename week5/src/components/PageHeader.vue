@@ -1,7 +1,7 @@
 <template>
   <div class="pageHeader">
     <h1>
-      <router-link to="/comics">Comicomic</router-link>
+      <router-link to="/home">Comicomic</router-link>
     </h1>
   </div>
 </template>

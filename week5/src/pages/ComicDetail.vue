@@ -64,7 +64,7 @@ export default {
     getApiData () {
       var vm = this
       this.$http
-        .get(`/static/data.json`)
+        .get(`./static/data.json`)
         .then(function (response) {
           let id = vm.comicId - 1
           if (id >= 0 && id < response.data.comics.length) {

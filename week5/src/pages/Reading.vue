@@ -47,7 +47,7 @@ export default {
     getApiData () {
       var vm = this
       this.$http
-        .get(`/static/data.json`)
+        .get(`./static/data.json`)
         .then(function (response) {
           let id = vm.comicId - 1
           let chapter = vm.currentChapter - 1

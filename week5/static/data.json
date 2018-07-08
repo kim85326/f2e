@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "MY HEXSCHOOL",
-            "coverImg": "/static/img/default/cover.png",
+            "coverImg": "./static/img/default/cover.png",
             "genres": "Fusce/vehicula/dolor",
             "author": "Namae Shiranai",
             "status": "Ongoing",
@@ -14,36 +14,36 @@
                     "id": 1,
                     "title": "The F2E Challenge Start!",
                     "pages": [
-                        "/static/img/default/storyboard-1.png",
-                        "/static/img/default/storyboard-2.png",
-                        "/static/img/default/storyboard-3.png",
-                        "/static/img/default/storyboard-4.png",
-                        "/static/img/default/storyboard-5.png",
-                        "/static/img/default/storyboard-6.png",
-                        "/static/img/default/storyboard-7.png",
-                        "/static/img/default/storyboard-8.png",
-                        "/static/img/default/storyboard-9.png",
-                        "/static/img/default/storyboard-10.png",
-                        "/static/img/default/storyboard-11.png",
-                        "/static/img/default/storyboard-12.png"
+                        "./static/img/default/storyboard-1.png",
+                        "./static/img/default/storyboard-2.png",
+                        "./static/img/default/storyboard-3.png",
+                        "./static/img/default/storyboard-4.png",
+                        "./static/img/default/storyboard-5.png",
+                        "./static/img/default/storyboard-6.png",
+                        "./static/img/default/storyboard-7.png",
+                        "./static/img/default/storyboard-8.png",
+                        "./static/img/default/storyboard-9.png",
+                        "./static/img/default/storyboard-10.png",
+                        "./static/img/default/storyboard-11.png",
+                        "./static/img/default/storyboard-12.png"
                     ]
                 },
                 {
                     "id": 2,
                     "title": "Todo List is Going Crazy!",
                     "pages": [
-                       "/static/img/default/storyboard-1.png",
-                        "/static/img/default/storyboard-2.png",
-                        "/static/img/default/storyboard-3.png",
-                        "/static/img/default/storyboard-4.png",
-                        "/static/img/default/storyboard-5.png",
-                        "/static/img/default/storyboard-6.png",
-                        "/static/img/default/storyboard-7.png",
-                        "/static/img/default/storyboard-8.png",
-                        "/static/img/default/storyboard-9.png",
-                        "/static/img/default/storyboard-10.png",
-                        "/static/img/default/storyboard-11.png",
-                        "/static/img/default/storyboard-12.png"
+                       "./static/img/default/storyboard-1.png",
+                        "./static/img/default/storyboard-2.png",
+                        "./static/img/default/storyboard-3.png",
+                        "./static/img/default/storyboard-4.png",
+                        "./static/img/default/storyboard-5.png",
+                        "./static/img/default/storyboard-6.png",
+                        "./static/img/default/storyboard-7.png",
+                        "./static/img/default/storyboard-8.png",
+                        "./static/img/default/storyboard-9.png",
+                        "./static/img/default/storyboard-10.png",
+                        "./static/img/default/storyboard-11.png",
+                        "./static/img/default/storyboard-12.png"
                     ]
                 }
             ]
@@ -51,7 +51,7 @@
         {
             "id": 2,
             "name": "海賊王",
-            "coverImg": "/static/img/OnePiece/cover.jpg",
+            "coverImg": "./static/img/OnePiece/cover.jpg",
             "genres": "少年漫畫",
             "author": "尾田榮一郎",
             "status": "連載中",
@@ -62,27 +62,27 @@
                     "id": 1,
                     "title": "東海篇",
                     "pages": [
-                        "/static/img/OnePiece/p1.jpg",
-                        "/static/img/OnePiece/p2.jpg",
-                        "/static/img/OnePiece/p3.jpg",
-                        "/static/img/OnePiece/p4.jpg"
+                        "./static/img/OnePiece/p1.jpg",
+                        "./static/img/OnePiece/p2.jpg",
+                        "./static/img/OnePiece/p3.jpg",
+                        "./static/img/OnePiece/p4.jpg"
                     ]
                 },
                 {
                     "id": 2,
                     "title": "阿拉巴斯坦篇",
                     "pages": [
-                        "/static/img/OnePiece/p5.jpg",
-                        "/static/img/OnePiece/p6.jpg",
-                        "/static/img/OnePiece/p7.jpg"
+                        "./static/img/OnePiece/p5.jpg",
+                        "./static/img/OnePiece/p6.jpg",
+                        "./static/img/OnePiece/p7.jpg"
                     ]
                 },
                 {
                     "id": 3,
                     "title": "空島篇",
                     "pages": [
-                        "/static/img/OnePiece/p8.jpg",
-                        "/static/img/OnePiece/p9.jpg"
+                        "./static/img/OnePiece/p8.jpg",
+                        "./static/img/OnePiece/p9.jpg"
                     ]
                 }
             ]

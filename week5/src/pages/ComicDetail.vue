@@ -2,7 +2,7 @@
   <div class="comicDetail" v-if="chapters.length">
     <div class="detail">
       <div class="cover">
-        <img src="/static/img/default/cover.png">
+        <img :src="coverImg">
       </div>
       <div class="context">
         <div class="name">
@@ -24,7 +24,7 @@
           <div class="description">
             <div class="title">Rate</div>
             <div class="content">
-              <i class="fas fa-star" v-for="(star, key) in rate" :key="key"></i>
+              <i class="fas fa-star" v-for="(star, key) in rate" :key="`full-star-${key}`"></i>
               <i class="far fa-star" v-for="(star, key) in (5-rate)" :key="key"></i>
             </div>
           </div>
@@ -64,18 +64,23 @@ export default {
     getApiData () {
       var vm = this
       this.$http
-        .get(`api/comics/${vm.comicId}`)
+        .get(`/static/data.json`)
         .then(function (response) {
-          var data = response.data
-          // console.log(data)
-          vm.name = data.name
-          vm.coverImg = data.coverImg
-          vm.genres = data.genres
-          vm.author = data.author
-          vm.status = data.status
-          vm.rate = data.rate
-          vm.summary = data.summary
-          vm.chapters = data.chapters.slice(0)
+          let id = vm.comicId - 1
+          if (id >= 0 && id < response.data.comics.length) {
+            var data = response.data.comics[id]
+            vm.name = data.name
+            vm.coverImg = data.coverImg
+            vm.genres = data.genres
+            vm.author = data.author
+            vm.status = data.status
+            vm.rate = data.rate
+            vm.summary = data.summary
+            vm.chapters = data.chapters.slice(0)
+          } else {
+            alert('抱歉！目前還沒有這本書')
+            vm.$router.replace('/home')
+          }
         })
         .catch(function (err) {
           console.log(err)
@@ -97,6 +102,7 @@ export default {
   justify-content: center;
   .cover {
     border: 4px solid $black;
+    height: 100%;
     > img {
       display: block;
       width: 300px;

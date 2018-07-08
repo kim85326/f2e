@@ -17,7 +17,7 @@ export default {
   props: {
     comic: {
       type: String,
-      default: 'My Hexschool'
+      default: '漫畫名稱'
     },
     currentChapter: {
       type: Number,
@@ -38,8 +38,6 @@ export default {
   },
   methods: {
     updateField (field, e) {
-      console.log('update ＝> ')
-      console.log(e.target.value)
       this.$emit(`update:current${field}`, e.target.value * 1)
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="reading" v-if="pages.length">
-    <Breadcrumbs :currentChapter.sync="currentChapter" :countChapters="chapters.length" :currentPage.sync="currentPage" :countPages="pages.length"/>
+    <Breadcrumbs :comic="name" :currentChapter.sync="currentChapter" :countChapters="chapters.length" :currentPage.sync="currentPage" :countPages="pages.length"/>
     <div class="main">
       <ArrowBtn direction="left" @click.native="prevPage"/>
       <div class="imgBox">
@@ -26,6 +26,7 @@ export default {
   data () {
     return {
       comicId: null,
+      name: null,
       currentChapter: null,
       chapters: [],
       currentPage: 1,
@@ -37,16 +38,33 @@ export default {
       return this.pages[this.currentPage - 1]
     }
   },
+  watch: {
+    currentChapter () {
+      this.$router.replace(`/comic/${this.comicId}/chapter/${this.currentChapter}`)
+    }
+  },
   methods: {
     getApiData () {
       var vm = this
       this.$http
-        .get(`api/comics/${vm.comicId}`)
+        .get(`/static/data.json`)
         .then(function (response) {
-          var data = response.data
-          // console.log(data)
-          vm.chapters = data.chapters.slice(0)
-          vm.pages = data.chapters[vm.currentChapter - 1].pages.slice(0)
+          let id = vm.comicId - 1
+          let chapter = vm.currentChapter - 1
+          if (id >= 0 && id < response.data.comics.length) {
+            var data = response.data.comics[id]
+            vm.name = data.name
+            vm.chapters = data.chapters.slice(0)
+            if (chapter >= 0 && chapter < vm.chapters.length) {
+              vm.pages = data.chapters[chapter].pages.slice(0)
+            } else {
+              alert('抱歉！目前還沒有章節')
+              vm.$router.replace(`/comic/${vm.comicId}`)
+            }
+          } else {
+            alert('抱歉！目前還沒有這本書')
+            vm.$router.replace('/home')
+          }
         })
         .catch(function (err) {
           console.log(err)
@@ -73,7 +91,7 @@ export default {
 
 <style scoped lang="scss">
 .main {
-  height: calc(80vh - 100px);
+  height: calc(80vh - 160px);
   display: flex;
   margin: 16px 72px;
   justify-content: space-between;

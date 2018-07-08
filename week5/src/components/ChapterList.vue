@@ -4,9 +4,10 @@
         All Chapters
     </div>
     <ul class="list">
-        <li v-for="(chapter, key) in chapters" :key="key">
+        <li v-for="chapter in chapters" :key="chapter.id">
           <router-link :to="{name: 'Reading', params:{ id: comicId, cid: chapter.id }}">
             Chapter {{chapter.id}}: {{chapter.title}}
+            <span class="newTag" v-if="chapter.id==chapters.length">NEW</span>
           </router-link>
         </li>
     </ul>
@@ -60,5 +61,16 @@ export default {
         background-color: $black;
     }
   }
+}
+.newTag {
+  display: inline-block;
+  margin-left: 16px;
+  padding: 2px 12px;
+  font-family: 'Roboto';
+  font-weight: Bold;
+  font-size: 14px;
+  color: $black;
+  background-color: $primary;
+  line-height: 14px;
 }
 </style>

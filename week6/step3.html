@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>week6 - Validation</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="public.css">
+    <style>
+        .upload_label{
+            display: block;
+        }
+        .upload_label + input[type="file"]{
+            display: none;
+        }
+        .upload_pic{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 140px;
+            border: 2px solid #000;
+            border-radius: 8px;
+            margin-top: 24px;
+            color: #9B9B9B;
+        }
+        .pic_icon{
+            font-size: 52px;
+        }
+        .pic_title{
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        .pic_title > span{
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header"></div>
+        <div class="step">
+            <ul>
+                <li class="complete">
+                    <i class="fas fa-check-circle"></i>
+                </li>
+                <li class="complete">
+                    <i class="fas fa-check-circle"></i>
+                </li>
+                <li class="current">
+                    <i class="far fa-dot-circle"></i>
+                </li>
+                <li class="incomplete">
+                    <i class="far fa-circle"></i>
+                </li>
+            </ul>
+        </div>
+        <h1 class="title">
+            Update Profile Picture
+        </h1>
+        <h2 class="sub_title">
+            We wanna know you more!
+        </h2>
+        <div class="main">
+            <form>
+                <label for="upload" class="upload_label">
+                    <div class="upload_pic">
+                        <div class="pic_icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="pic_title">
+                            UPLOAD UP TO 3 PHOTOS<br>
+                            <span>MAX SIZE: 150*150px</span>
+                        </div>
+                    </div>
+                </label>
+                <input type="file" id="upload">
+                <button type="submit" class="btn btn-primary">SUBMIT & NEXT</button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("form").submit(function () {
+                event.preventDefault();
+                window.location.href = "step4.html";
+            })
+        });
+    </script>
+</body>
+</html>

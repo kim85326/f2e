@@ -1,0 +1,113 @@
+ol, ul{
+  list-style: none;
+}
+
+.wrapper{
+  width: 500px;
+  margin: 0 auto;
+}
+
+.header{
+  background-color: #0275D8;
+  height: 8px;
+}
+
+.step > ul{
+  display: flex;
+  justify-content: center;
+  color: #BEE1FF;
+  margin-top: 54px;
+  margin-bottom: 54px;
+}
+
+.step > ul > li{
+  font-size: 16px
+}
+
+.step > ul > li + li {
+  padding-left: 64px;
+}
+
+.step > ul > li{
+  position: relative;
+}
+
+.step > ul > li:not(:first-child)::after{
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: -1px;
+  width: 65px;
+  height: 2px;
+  background-color: #BEE1FF;
+  z-index: -1;
+}
+
+.step > ul > li:not(.incomplete){
+  color: #0275D8;
+}
+.step > ul > li:not(.incomplete)::after{
+  background-color: #0275D8;
+}
+
+.title{
+  font-size: 48px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.sub_title{
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+}
+
+form{
+    margin-top: 24px;
+    margin-bottom: 153px;
+}
+
+.form-group label{
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select{
+    border: 2px solid #000;
+    font-size: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    height: 52px;
+    border-radius: 8px;
+}
+
+select.form-control:not([size]):not([multiple]){
+    height: 52px;
+}
+
+form > .btn{
+    margin-top: 32px;
+    width: 100%;
+    background-color: #0275D8;
+    border: 2px solid #4A90E2;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 14px;
+}
+
+form > .btn:hover,
+form > .btn:active,
+form > .btn:focus{
+    background-color: #0275D8;
+}
+
+form > .btn.disabled, 
+form > .btn:disabled{
+    background-color: #BEE1FF;
+    border-color: #BEE1FF;
+}

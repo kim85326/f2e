@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-dark bg-primary justify-content-start">
-      <a class="navbar-brand" href="#">HaveFun</a>
+      <a class="navbar-brand"
+         href="#">HaveFun</a>
       <div class="search">
         <i class="fas fa-search"></i>
-        <input class="form-control mr-sm-2" type="search" placeholder="Explore your own activities">
+        <input class="form-control mr-sm-2"
+               type="search"
+               placeholder="Explore your own activities">
       </div>
     </nav>
     <div class="d-flex">
@@ -12,7 +15,7 @@
         <div class="menu-item">
           <div class="menu-item--title">Location</div>
           <div>
-            <select id="" class="form-control">
+            <select class="form-control">
               <option value="taiwan">taiwan</option>
             </select>
           </div>
@@ -22,54 +25,67 @@
           <div class="row align-items-center date">
             <div class="col col-xs-6">from</div>
             <div class="col col-xs-6">
-              <input type="date" class="form-control">
+              <input type="date"
+                     class="form-control">
             </div>
           </div>
           <div class="row align-items-center date">
             <div class="col col-xs-6">to</div>
             <div class="col col-xs-6">
-              <input type="date" class="form-control">
+              <input type="date"
+                     class="form-control">
             </div>
           </div>
         </div>
         <div class="menu-item">
           <div class="menu-item--title">Categories</div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              All
-            </label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   value
+                   id="defaultCheck1">
+            <label class="form-check-label"
+                   for="defaultCheck1">All</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-            <label class="form-check-label" for="defaultCheck2">
-              Entertainment
-            </label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   value
+                   id="defaultCheck2">
+            <label class="form-check-label"
+                   for="defaultCheck2">Entertainment</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-            <label class="form-check-label" for="defaultCheck3">
-              Food
-            </label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   value
+                   id="defaultCheck3">
+            <label class="form-check-label"
+                   for="defaultCheck3">Food</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-            <label class="form-check-label" for="defaultCheck4">
-              Learning
-            </label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   value
+                   id="defaultCheck4">
+            <label class="form-check-label"
+                   for="defaultCheck4">Learning</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
-            <label class="form-check-label" for="defaultCheck5">
-              Outdoors
-            </label>
+            <input class="form-check-input"
+                   type="checkbox"
+                   value
+                   id="defaultCheck5">
+            <label class="form-check-label"
+                   for="defaultCheck5">Outdoors</label>
           </div>
         </div>
       </div>
       <div class="main col col-sm-8">
         <div class="container">
           <div class="result-count">
-            Showing <span class="text-secondary">15</span> results by…
+            Showing
+            <span class="text-secondary">15</span> results by…
           </div>
           <div class="tag d-flex">
             <div class="tag-item">
@@ -85,8 +101,9 @@
               </button>
             </div>
           </div>
-          <Showbox/>
-          <Showbox/>
+          <Card v-for="item in items"
+                :item="item"
+                :key="item.id" />
         </div>
       </div>
     </div>
@@ -94,12 +111,25 @@
 </template>
 
 <script>
-import Showbox from './components/Showbox'
+import Card from './components/Card'
 
 export default {
   name: 'App',
   components: {
-    Showbox
+    Card
+  },
+  data: function () {
+    return {
+      items: []
+    }
+  },
+  mounted () {
+    const vm = this
+    const apiUrl = 'https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97'
+    this.$http.get(apiUrl)
+      .then((response) => {
+        vm.items = response.data.result.records
+      })
   }
 }
 </script>
@@ -146,7 +176,7 @@ $gray-4: #9b9b9b;
   padding-left: 38px;
 }
 
-@media (max-width:768px){
+@media (max-width: 768px) {
   .menu {
     max-width: 350px;
     margin-left: -30px;

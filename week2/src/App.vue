@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-dark bg-primary justify-content-start">
       <a class="navbar-brand"
-         href="#">HaveFun</a>
+         href="#">高雄 HaveFun</a>
       <div class="search">
         <i class="fas fa-search"></i>
         <input class="form-control mr-sm-2"
@@ -13,95 +13,50 @@
     <div class="d-flex">
       <div class="menu col col-sm-4">
         <div class="menu-item">
-          <div class="menu-item--title">Location</div>
+          <div class="menu-item--title">地區</div>
           <div>
-            <select class="form-control">
-              <option value="taiwan">taiwan</option>
+            <select class="form-control"
+                    v-model="currentLocation">
+              <option value="">全部</option>
+              <option v-for="location in locations"
+                      :key="location"
+                      :value="location">{{location}}</option>
             </select>
           </div>
         </div>
         <div class="menu-item">
-          <div class="menu-item--title">Date</div>
-          <div class="row align-items-center date">
-            <div class="col col-xs-6">from</div>
-            <div class="col col-xs-6">
-              <input type="date"
-                     class="form-control">
-            </div>
-          </div>
-          <div class="row align-items-center date">
-            <div class="col col-xs-6">to</div>
-            <div class="col col-xs-6">
-              <input type="date"
-                     class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item--title">Categories</div>
-          <div class="form-check">
+          <div class="menu-item--title">進階搜尋</div>
+          <div class="form-check"
+               v-for="tag in tags"
+               :key="tag.name">
             <input class="form-check-input"
                    type="checkbox"
-                   value
-                   id="defaultCheck1">
+                   v-model="currentTags"
+                   :value="tag"
+                   :id="tag.name">
             <label class="form-check-label"
-                   for="defaultCheck1">All</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input"
-                   type="checkbox"
-                   value
-                   id="defaultCheck2">
-            <label class="form-check-label"
-                   for="defaultCheck2">Entertainment</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input"
-                   type="checkbox"
-                   value
-                   id="defaultCheck3">
-            <label class="form-check-label"
-                   for="defaultCheck3">Food</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input"
-                   type="checkbox"
-                   value
-                   id="defaultCheck4">
-            <label class="form-check-label"
-                   for="defaultCheck4">Learning</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input"
-                   type="checkbox"
-                   value
-                   id="defaultCheck5">
-            <label class="form-check-label"
-                   for="defaultCheck5">Outdoors</label>
+                   :for="tag.name">{{tag.name}}</label>
           </div>
         </div>
       </div>
       <div class="main col col-sm-8">
         <div class="container">
           <div class="result-count">
-            Showing
-            <span class="text-secondary">15</span> results by…
+            共
+            <span class="text-secondary">{{count}}</span> 筆搜尋結果...
           </div>
           <div class="tag d-flex">
-            <div class="tag-item">
-              <button class="btn btn-outline-secondary">
-                Koahsiung
-                <i class="far fa-times-circle"></i>
-              </button>
-            </div>
-            <div class="tag-item">
-              <button class="btn btn-outline-secondary">
-                Entertainment
+            <div class="tag-item"
+                 v-for="(currentTag, index) in currentTags"
+                 :key="currentTag.name">
+              <button class="btn btn-outline-secondary"
+                      @click="removeCurrentTag(index)">
+                {{currentTag.name}}
                 <i class="far fa-times-circle"></i>
               </button>
             </div>
           </div>
-          <Card v-for="item in items"
+          <Card v-for="item in filterItems"
                 :item="item"
                 :key="item.id" />
         </div>
@@ -118,9 +73,41 @@ export default {
   components: {
     Card
   },
-  data: function () {
+  data () {
     return {
-      items: []
+      items: [],
+      filterItems: [],
+      locations: {},
+      currentLocation: '',
+      tags: [
+        {
+          field: 'Ticketinfo',
+          name: '免費參觀'
+        },
+        {
+          field: 'Opentime',
+          name: '全天候開放'
+        }],
+      currentTags: []
+    }
+  },
+  computed: {
+    count () {
+      return this.items.length
+    }
+  },
+  watch: {
+    currentLocation: {
+      handler () {
+        this.getFilterItems()
+      },
+      deep: true
+    },
+    currentTags: {
+      handler () {
+        this.getFilterItems()
+      },
+      deep: true
     }
   },
   mounted () {
@@ -129,7 +116,42 @@ export default {
     this.$http.get(apiUrl)
       .then((response) => {
         vm.items = response.data.result.records
+        vm.filterItems = vm.items
+        vm.getLocations()
       })
+  },
+  methods: {
+    getLocations () {
+      const locations = new Set()
+      this.items.forEach(item => {
+        locations.add(item.Zone)
+      })
+      this.locations = Array.from(locations)
+    },
+    getFilterItems () {
+      const vm = this
+      let filterItems
+      filterItems = this.items.filter((item) => {
+        return item.Zone.match(vm.currentLocation)
+      })
+
+      if (vm.currentTags.length !== 0) {
+        filterItems = filterItems.filter((item) => {
+          let isMatch = true
+          vm.currentTags.forEach((currentTag) => {
+            if (!item[currentTag.field].match(currentTag.name)) {
+              isMatch = false
+            }
+          })
+          return isMatch
+        })
+      }
+
+      vm.filterItems = filterItems
+    },
+    removeCurrentTag (index) {
+      this.currentTags.splice(index, 1)
+    }
   }
 }
 </script>
@@ -196,10 +218,6 @@ $gray-4: #9b9b9b;
   font-size: 20px;
   color: #000000;
   margin-bottom: 15px;
-}
-
-.menu-item .date {
-  margin-bottom: 8px;
 }
 
 .main {

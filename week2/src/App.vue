@@ -93,7 +93,7 @@ export default {
   },
   computed: {
     count () {
-      return this.items.length
+      return this.filterItems.length
     }
   },
   watch: {
